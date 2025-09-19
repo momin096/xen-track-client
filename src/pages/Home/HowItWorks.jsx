@@ -29,7 +29,7 @@ const cardsData = [
 
 const HowItWorks = () => {
     return (
-        <div className="container mx-auto py-16 px-4 ">
+        <div data-aos="zoom-in-up" className="container mx-auto py-16 px-4 ">
             <h2 className="text-4xl font-bold mb-12 text-center ">How it Works</h2>
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                 {cardsData.map((card, index) => (
