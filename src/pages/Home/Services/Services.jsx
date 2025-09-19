@@ -53,7 +53,7 @@ const Services = () => {
                         title={service.title}
                         description={service.description}
                         icon={service.icon}
-                        className={index === 1 ? 'bg-lime-300' : 'bg-white'}
+                        
                     />
                 ))}
             </div>
