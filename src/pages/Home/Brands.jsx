@@ -14,7 +14,7 @@ const Brands = () => {
     return (
         <div className="my-10">
             <h3 className="text-2xl font-bold text-center my-10"> We've helped thousands of sales teams</h3>
-            <Marquee gradient={false} speed={50} className="">
+            <Marquee gradient={false} speed={100} pauseOnHover={true} className="bg-white py-3 rounded-md">
                 {clients.map((logo, i) => (
                     <img
                         key={i}
