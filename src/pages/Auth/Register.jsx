@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import { useForm } from "react-hook-form"
+import { Link, useNavigate } from 'react-router';
+import UseAuth from '../../hooks/UseAuth';
+import { AiOutlineLoading } from 'react-icons/ai';
 export default function Register() {
-
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
+    const { createUser, loading, setLoading, signInGoogle } = UseAuth()
 
     const {
         register,
@@ -11,11 +15,27 @@ export default function Register() {
     } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        try {
+            createUser(data.email, data.password)
+                .then(result => {
+                    console.log(result.user);
+                    navigate('/')
+                }).catch(err => {
+                    console.log(err);
+                })
+        } catch (err) {
+            console.log(err);
+            setLoading(false)
+        }
     }
     const handleGoogleLogin = () => {
-        // Handle Google login logic here
-        console.log('Google login attempt');
+        signInGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate('/')
+            }).catch(err => {
+                console.log(err);
+            })
     };
 
     return (
@@ -78,8 +98,7 @@ export default function Register() {
                                             placeholder="Password"
                                             className="w-full px-4 py-3 pr-12 border border-gray-200 text-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-lime-400 focus:border-transparent"
                                         />
-                                        {errors.password?.type === 'required' && <p className='text-red-500'>Password is required</p>}
-                                        {errors.password?.type === 'minLength' && <p className='text-red-500'>Password must me 6 Characters</p>}
+
                                         <button
                                             type="button"
                                             onClick={() => setShowPassword(!showPassword)}
@@ -96,23 +115,27 @@ export default function Register() {
                                                 </svg>
                                             )}
                                         </button>
+
                                     </div>
+                                    {errors.password?.type === 'required' && <p className='text-red-500'>Password is required</p>}
+                                    {errors.password?.type === 'minLength' && <p className='text-red-500'>Password must me 6 Characters</p>}
                                 </div>
 
                                 <button
+                                    disabled={loading}
                                     onClick={handleSubmit}
-                                    className="w-full bg-lime-400 hover:bg-lime-500 text-gray-800 font-semibold py-3 px-4 rounded-lg transition duration-200"
+                                    className="w-full bg-lime-400  hover:bg-lime-500 text-gray-800 font-bold py-3 px-4 rounded-lg transition duration-200"
                                 >
-                                    Login
+                                    {loading ? <AiOutlineLoading className='animate-spin mx-auto' /> : "Register"}
                                 </button>
                             </form>
 
                             {/* Register Link */}
                             <p className="text-center text-gray-600 mt-6">
-                                Don't have any account?{' '}
-                                <a href="#" className="text-lime-500 hover:text-lime-600 font-medium">
-                                    Register
-                                </a>
+                                Already have an account?{' '}
+                                <Link to={'/login'} className="text-lime-500 hover:text-lime-600 font-medium">
+                                    Login
+                                </Link>
                             </p>
 
                             {/* Divider */}

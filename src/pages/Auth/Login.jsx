@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { useForm } from "react-hook-form"
+import { Link, useNavigate } from 'react-router';
+import UseAuth from '../../hooks/UseAuth';
+import { AiOutlineLoading } from 'react-icons/ai';
 export default function Login() {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-
+    const { signIn, loading, signInGoogle } = UseAuth()
     const {
         register,
         handleSubmit,
@@ -12,11 +14,24 @@ export default function Login() {
     } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        signIn(data.email, data.password)
+            .then(result => {
+                console.log(result.user);
+                navigate('/')
+            }).catch(err => {
+                console.log(err);
+            })
     }
+
+
     const handleGoogleLogin = () => {
-        // Handle Google login logic here
-        console.log('Google login attempt');
+        signInGoogle()
+            .then(result => {
+                console.log(result.user);
+                navigate('/')
+            }).catch(err => {
+                console.log(err);
+            })
     };
 
     return (
@@ -88,26 +103,22 @@ export default function Login() {
                                     </div>
                                 </div>
 
-                                <div className="text-right">
-                                    <a href="#" className="text-sm text-gray-500 hover:text-gray-700 underline">
-                                        Forget Password?
-                                    </a>
-                                </div>
+
 
                                 <button
                                     onClick={handleSubmit}
                                     className="w-full bg-lime-400 hover:bg-lime-500 text-gray-800 font-semibold py-3 px-4 rounded-lg transition duration-200"
                                 >
-                                    Login
+                                    {loading ? <AiOutlineLoading className='animate-spin mx-auto' /> : "Login"}
                                 </button>
                             </form>
 
                             {/* Register Link */}
                             <p className="text-center text-gray-600 mt-6">
                                 Don't have any account?{' '}
-                                <a href="#" className="text-lime-500 hover:text-lime-600 font-medium">
+                                <Link to={'/register'} className="text-lime-500 hover:text-lime-600 font-medium">
                                     Register
-                                </a>
+                                </Link>
                             </p>
 
                             {/* Divider */}

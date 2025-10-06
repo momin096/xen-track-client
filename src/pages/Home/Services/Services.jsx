@@ -38,8 +38,9 @@ const services = [
 
 const Services = () => {
     return (
-        <div data-aos="zoom-out-down" className="bg-primary p-16 rounded-4xl">
-            <div className="container mx-auto text-center text-white mb-12">
+        <div className="bg-primary p-16 rounded-4xl">
+            <div data-aos="fade-right"
+                data-aos-duration="2000" className="container mx-auto text-center text-white mb-12">
                 <h2 className="text-4xl font-bold">Our Services</h2>
                 <p className="mt-4 max-w-2xl mx-auto opacity-80">
                     Enjoy fast, reliable parcel delivery with real-time tracking and zero hassle. From personal packages to business shipments — we deliver on time, every time.
@@ -53,7 +54,7 @@ const Services = () => {
                         title={service.title}
                         description={service.description}
                         icon={service.icon}
-                        
+
                     />
                 ))}
             </div>

@@ -23,8 +23,7 @@ const featuresData = [
 
 const KeyFeatures = () => {
     return (
-        <section data-aos="fade-up"
-            data-aos-duration="3000" className="py-16 px-4">
+        <section  className="py-16 px-4">
 
             <div className="container mx-auto max-w-5xl space-y-8"> {/* space-y-8 adds vertical spacing between cards */}
                 {featuresData.map((feature, index) => (

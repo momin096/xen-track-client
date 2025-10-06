@@ -6,3 +6,9 @@
 .font-urbanist {
   font-family: "Urbanist", sans-serif;
 }
+
+.active {
+  background-color: #bef264;
+  border-radius: 10px;
+  color: black;
+}

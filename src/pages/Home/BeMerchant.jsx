@@ -6,10 +6,10 @@ const BeMerchant = () => {
     <div className=" py-5 px-4 my-10">
       <div className="container mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
         {/* Background Overlay with Wave Pattern */}
-        <div 
+        <div
           className="absolute inset-0 z-0 bg-teal-950"
           style={{
-            backgroundImage: `url(${bg})`, 
+            backgroundImage: `url(${bg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
@@ -18,7 +18,10 @@ const BeMerchant = () => {
         {/* Content Container */}
         <div className="relative z-10 p-12 lg:p-16 flex flex-col lg:flex-row items-center justify-between ">
           {/* Left Side: Text and Buttons */}
-          <div className="text-white text-center lg:text-left mb-8 lg:mb-0 lg:w-1/2">
+          <div
+            data-aos="fade-right"
+            data-aos-duration="3000"
+            className="text-white text-center lg:text-left mb-8 lg:mb-0 lg:w-1/2">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">
               Merchant and Customer Satisfaction <br className="hidden md:inline" /> is Our First Priority
             </h1>
@@ -36,11 +39,13 @@ const BeMerchant = () => {
           </div>
 
           {/* Right Side: Illustration */}
-          <div className="lg:w-1/2 flex justify-center lg:justify-end">
-            <img 
+          <div
+            data-aos="fade-left"
+            data-aos-duration="2000" className="lg:w-1/2 flex justify-center lg:justify-end">
+            <img
               src={image}
-              alt="Packages illustration" 
-              className="w-full max-w-xs md:max-w-md lg:max-w-full" 
+              alt="Packages illustration"
+              className="w-full max-w-xs md:max-w-md lg:max-w-full"
             />
           </div>
         </div>

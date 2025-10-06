@@ -8,8 +8,13 @@ import Slide3 from '../../assets/banner/banner3.png'
 
 const Banner = () => {
     return (
-        <Carousel autoPlay={true} infiniteLoop={true} showThumbs={false}> 
-            <div>
+        <Carousel
+
+            autoPlay={true} infiniteLoop={true} showThumbs={false}>
+            <div
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+            >
                 <img src={Slide1} />
             </div>
             <div>

@@ -1,10 +1,11 @@
 
 const FeatureCard = ({ imageSrc, title, description }) => {
   return (
-    <div className="card  bg-white shadow-xl rounded-box p-6 flex flex-col lg:flex-row items-center justify-center  text-center lg:text-left gap-5">
+    <div data-aos="fade-up" data-aos-duration="2000"
+      className="card  bg-white shadow-xl rounded-box p-6 flex flex-col lg:flex-row items-center justify-center  text-center lg:text-left gap-5">
       {/* Image / Illustration Section */}
       <figure className="flex justify-center items-center p-4 lg:border-r-2 border-gray-300 border-dashed">
-        <img src={imageSrc} alt={title} className="w-full h-full" /> 
+        <img src={imageSrc} alt={title} className="w-full h-full" />
       </figure>
 
       {/* Text Content Section */}
