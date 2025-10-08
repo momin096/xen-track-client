@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router';
 import UseAuth from '../../hooks/UseAuth';
 import { AiOutlineLoading } from 'react-icons/ai';
+import toast from 'react-hot-toast';
 export default function Register() {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
@@ -19,9 +20,11 @@ export default function Register() {
             createUser(data.email, data.password)
                 .then(result => {
                     console.log(result.user);
+                    toast.success("Create Account Successfully")
                     navigate('/')
                 }).catch(err => {
                     console.log(err);
+                    toast.error(err.message)
                 })
         } catch (err) {
             console.log(err);
@@ -32,9 +35,11 @@ export default function Register() {
         signInGoogle()
             .then(result => {
                 console.log(result.user);
+                toast.success("SignUp Successfully")
                 navigate('/')
             }).catch(err => {
                 console.log(err);
+                toast.error(err.message)
             })
     };
 
@@ -43,7 +48,9 @@ export default function Register() {
             <div className="w-full max-w-6xl bg-white rounded-3xl shadow-xl overflow-hidden">
                 <div className="flex flex-col lg:flex-row-reverse">
                     {/* Left side - Login Form */}
-                    <div className="lg:w-1/2 p-8 lg:p-16">
+                    <div
+                        data-aos="fade-right" data-aos-duration="2000"
+                        className="lg:w-1/2 p-8 lg:p-16">
                         <div className="max-w-md mx-auto">
                             {/* Logo */}
                             <div className="flex items-center mb-8">
@@ -162,8 +169,12 @@ export default function Register() {
                     </div>
 
                     {/* Right side - Illustration */}
-                    <div className="lg:w-1/2 bg-gradient-to-br from-lime-100 via-green-100 to-yellow-100 p-8 lg:p-16 flex items-center justify-center">
-                        <div className="relative max-w-md w-full">
+                    <div
+                        data-aos="fade-left" data-aos-duration="2000"
+                        className="lg:w-1/2 bg-gradient-to-br from-lime-100 via-green-100 to-yellow-100 p-8 lg:p-16 flex items-center justify-center">
+                        <div
+
+                            className="relative max-w-md w-full">
                             {/* Illustration Container */}
                             <div className="relative">
                                 {/* Background Circle */}

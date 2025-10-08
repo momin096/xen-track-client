@@ -7,11 +7,13 @@ const Navbar = () => {
         <li><NavLink to={'/services'}>Services</NavLink></li>
         <li><NavLink to={'/coverage'}>Coverage</NavLink></li>
         <li><NavLink to={'/about-us'}>About Us</NavLink></li>
-        <li><NavLink to={'pricing'}>Pricing</NavLink></li>
+        <li><NavLink to={'/send-parcel'}>Send A Parcel</NavLink></li>
         <li><NavLink to={'/be-rider'}>Be a Rider</NavLink></li>
     </>
     return (
-        <div>
+        <div
+            data-aos="fade-down" data-aos-duration="1000"
+        >
             <div className="navbar bg-base-100 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">

@@ -5,6 +5,8 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import Coverage from "../pages/Home/Coverage";
+import SendParcel from "../pages/SendParcel/SendPercel";
+import PrivateRoute from "../routes/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -18,6 +20,12 @@ const router = createBrowserRouter([
             {
                 path: 'coverage',
                 element: <Coverage />
+            },
+            {
+                path: '/send-parcel',
+                element: <PrivateRoute>
+                    <SendParcel />
+                </PrivateRoute>
             }
         ]
     },
@@ -32,7 +40,8 @@ const router = createBrowserRouter([
             {
                 path: '/register',
                 Component: Register
-            }
+            },
+            
         ]
     }
 ]);

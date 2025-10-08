@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { Link, useNavigate } from 'react-router';
 import UseAuth from '../../hooks/UseAuth';
 import { AiOutlineLoading } from 'react-icons/ai';
+import toast from 'react-hot-toast';
 export default function Login() {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
@@ -17,9 +18,11 @@ export default function Login() {
         signIn(data.email, data.password)
             .then(result => {
                 console.log(result.user);
+                toast.success("Login Successfully")
                 navigate('/')
             }).catch(err => {
                 console.log(err);
+                toast.error(err.message)
             })
     }
 
@@ -28,9 +31,11 @@ export default function Login() {
         signInGoogle()
             .then(result => {
                 console.log(result.user);
+                toast.success("Login Successfully")
                 navigate('/')
             }).catch(err => {
                 console.log(err);
+                toast.error(err.message)
             })
     };
 
@@ -39,7 +44,9 @@ export default function Login() {
             <div className="w-full max-w-6xl bg-white rounded-3xl shadow-xl overflow-hidden">
                 <div className="flex flex-col lg:flex-row">
                     {/* Left side - Login Form */}
-                    <div className="lg:w-1/2 p-8 lg:p-16">
+                    <div
+                        data-aos="fade-left" data-aos-duration="2000"
+                        className="lg:w-1/2 p-8 lg:p-16">
                         <div className="max-w-md mx-auto">
                             {/* Logo */}
                             <div className="flex items-center mb-8">
@@ -54,12 +61,17 @@ export default function Login() {
                             <p className="text-gray-600 mb-8">Login with Xen-Track</p>
 
                             {/* Login Form */}
-                            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+                            <form
+
+                                className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
                                 <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    <label
+
+                                        className="block text-sm font-medium text-gray-700 mb-2">
                                         Email
                                     </label>
                                     <input
+
                                         {...register("email", { required: true })}
                                         type="email"
                                         placeholder="Email"
@@ -145,8 +157,12 @@ export default function Login() {
                     </div>
 
                     {/* Right side - Illustration */}
-                    <div className="lg:w-1/2 bg-gradient-to-br from-lime-100 via-green-100 to-yellow-100 p-8 lg:p-16 flex items-center justify-center">
-                        <div className="relative max-w-md w-full">
+                    <div
+                        data-aos="fade-right" data-aos-duration="2000"
+                        className="lg:w-1/2 bg-gradient-to-br from-lime-100 via-green-100 to-yellow-100 p-8 lg:p-16 flex items-center justify-center">
+                        <div
+
+                            className="relative max-w-md w-full">
                             {/* Illustration Container */}
                             <div className="relative">
                                 {/* Background Circle */}
