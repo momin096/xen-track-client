@@ -65,7 +65,7 @@ const SendParcel = () => {
         const total = calculatePrice(parcelType, weight, sameRegion);
         setTotalPrice(total);
 
-        toast.success(`Total Price: ৳${total}`, { duration: 10000 });
+        toast.success(`Total Price: ৳ ${total}`, { duration: 10000 });
         setShowConfirm(true);
     };
 
@@ -89,7 +89,9 @@ const SendParcel = () => {
             .then(res => {
                 console.log(res.data);
                 if (res.data.insertedId) {
-                    toast.success("Parcel placed successfully!");
+                    toast.loading("Proceeding to payment gateway.",{duration: 4000});
+                    // redirect the payment page
+
                 }
             }).catch((err) => {
                 console.log(err);
@@ -101,8 +103,11 @@ const SendParcel = () => {
     };
 
     return (
-        <div className="max-w-6xl mx-auto px-6 py-10">
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">Add Parcel</h2>
+        <div
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            className="max-w-6xl mx-auto px-6 py-10">
+            <h2 className="text-3xl font-bold text-gray-400 mb-4">Add Parcel</h2>
             <hr className="mb-6" />
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">

@@ -3,7 +3,7 @@ import bg from '../../assets/be-a-merchant-bg.png'
 
 const BeMerchant = () => {
   return (
-    <div className=" py-5 px-4 my-10">
+    <div className="py-16 px-4  my-10">
       <div className="container mx-auto rounded-3xl overflow-hidden shadow-2xl relative">
         {/* Background Overlay with Wave Pattern */}
         <div

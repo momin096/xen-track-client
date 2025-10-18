@@ -9,11 +9,11 @@ import Slide3 from '../../assets/banner/banner3.png'
 const Banner = () => {
     return (
         <Carousel
-
+        className="py-16 px-4 "
             autoPlay={true} infiniteLoop={true} showThumbs={false}>
             <div
-                data-aos="zoom-in"
-                data-aos-duration="1000"
+                data-aos="fade-down"
+                data-aos-duration="2000"
             >
                 <img src={Slide1} />
             </div>

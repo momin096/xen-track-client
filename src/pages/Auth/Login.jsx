@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import UseAuth from '../../hooks/UseAuth';
 import { AiOutlineLoading } from 'react-icons/ai';
 import toast from 'react-hot-toast';
@@ -14,12 +14,16 @@ export default function Login() {
         formState: { errors },
     } = useForm();
 
+    const location = useLocation();
+    const from = location?.state.from || '/'
+
+
     const onSubmit = data => {
         signIn(data.email, data.password)
             .then(result => {
                 console.log(result.user);
                 toast.success("Login Successfully")
-                navigate('/')
+                navigate(from)
             }).catch(err => {
                 console.log(err);
                 toast.error(err.message)
@@ -32,7 +36,7 @@ export default function Login() {
             .then(result => {
                 console.log(result.user);
                 toast.success("Login Successfully")
-                navigate('/')
+                navigate(from)
             }).catch(err => {
                 console.log(err);
                 toast.error(err.message)

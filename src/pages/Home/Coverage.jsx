@@ -39,7 +39,7 @@ const CoverageMap = () => {
             .then(data => setDistricts(data));
     }, []);
 
-    
+
     useEffect(() => {
         if (search) {
             const match = districts.filter(d =>
@@ -51,21 +51,21 @@ const CoverageMap = () => {
         }
     }, [search, districts]);
 
-    
+
     const handleSelect = (district, index) => {
         setSearch(district.district);
         const coords = [district.latitude, district.longitude];
         setSelectedCoords(coords);
         setActiveIndex(index);
 
-        
+
         setTimeout(() => {
             popupRefs.current[index]?.openPopup();
         }, 300);
     };
 
     return (
-        <div className="w-full flex flex-col items-center py-10 min-h-[calc(100vh-100px)] space-y-6">
+        <div className="w-full flex flex-col items-center py-16 px-4  min-h-[calc(100vh-100px)] space-y-6">
             <h2 className="text-2xl font-bold text-center">We are available in 64 districts</h2>
 
             {/* 🔍 Search Bar */}

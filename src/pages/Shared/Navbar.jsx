@@ -6,8 +6,14 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to={'/services'}>Services</NavLink></li>
         <li><NavLink to={'/coverage'}>Coverage</NavLink></li>
-        <li><NavLink to={'/about-us'}>About Us</NavLink></li>
-        <li><NavLink to={'/send-parcel'}>Send A Parcel</NavLink></li>
+
+        {
+            user && <>
+                <li><NavLink to={'/send-parcel'}>Send A Parcel</NavLink></li>
+                <li><NavLink to={'/dashboard'}>Dashboard</NavLink></li>
+            </>
+        }
+
         <li><NavLink to={'/be-rider'}>Be a Rider</NavLink></li>
     </>
     return (
